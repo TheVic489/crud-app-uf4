@@ -1,0 +1,28 @@
+<div class="container">
+    <h3 class="title form ">Iniciar sesión</h3> 
+    <form  class="form" [formGroup]="myForm" (ngSubmit)="submit()">
+        <p>Username:
+            <input class="form-control" type="text" formControlName="username">
+            <span class="red-font" *ngIf="this.myForm.get('username')?.errors?.['required'] && 
+                                          this.myForm.get('username')?.touched">
+            *Escribe el ususario
+            </span>
+        </p>
+
+        <p>Contraseña:
+            <input type="password" class="form-control" formControlName="password">
+            <span class="red-font" *ngIf="this.myForm.get('password')?.errors?.['required'] && 
+                                          this.myForm.get('password')?.touched">
+                *Escribe la contraseña
+            </span>
+        </p>
+
+        <button class="btn btn-primary" [disabled]="myForm.invalid" type="submit">Enviar</button>
+    </form>
+    <div class="green-font">
+        {{result}}
+    </div>
+    <div>
+        <!-- {{role}} -->
+    </div>
+</div>

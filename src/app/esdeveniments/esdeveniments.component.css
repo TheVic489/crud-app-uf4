@@ -1,0 +1,46 @@
+.title {
+    margin-bottom: 20px;
+    margin-top: 20px; 
+    text-align: center;  
+}
+.table-div {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.page {
+    text-align: center;
+    margin-top: 5px; 
+}
+.number {
+    text-align: center;
+}
+.select {
+    padding-left: 20px;
+
+}
+b {
+    font-size: 19px;
+}
+
+.filter {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+ul .ngx-pagination {
+    padding-left: 0;
+
+}
+.float-right {
+    float: right;
+    margin-right: 100px;
+
+}
+.abajo-izquierda {
+    text-align: right;
+    float: right;
+    position: absolute;
+}
+form.form {
+    margin-left: 30%;
+    margin-right: 30%;
+}
