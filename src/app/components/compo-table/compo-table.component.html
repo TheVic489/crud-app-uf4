@@ -1,0 +1,31 @@
+<h1 class="title">Species in Catalunya!</h1>
+<div class="table-div">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Grup</th>
+        <th scope="col">Familia</th>
+        <th scope="col">Especie</th>
+        <th scope="col">Origen</th>
+        <th scope="col">Endemisme</th>
+        <th scope="col">Ambient</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of tableData">
+        <td class="table-active">{{ dato.id }}</td>
+        <td class="table-active">{{ dato.grup }}</td>
+        <td class="table-active">{{ dato.familia }}</td>
+        <td class="table-active">{{ dato.especie }}</td>
+        <td class="table-active">{{ dato.origen }}</td>
+        <td class="table-active">{{ dato.endemisme }}</td>
+        <td class="table-active">{{ dato.ambient }}</td>
+
+        <td class="table-active">
+          <button class="btn btn-secondary float-right" (click)="selectDeleteRow(dato.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

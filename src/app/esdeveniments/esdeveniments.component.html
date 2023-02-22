@@ -32,7 +32,7 @@
             <td  class="table-active" >{{ event.place }}
             </td>
             <td class="table-active">
-                <button *ngIf="myRole == 'comprador'" class="btn btn-success float-right" i d="buyButton" >Buy ticket</button>
+                <button *ngIf="myRole == 'comprador'" class="btn btn-success float-right" id="buyButton" >Buy ticket</button>
                 <button *ngIf="myRole == 'admin'|| myRole == 'staff'" class="btn btn-secondary float-right" id="deleteButton" (click)="deleteRow(event)">Delete</button>
 
             </td>

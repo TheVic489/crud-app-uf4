@@ -1,6 +1,7 @@
 import { Component, OnInit }                          from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersServiceService }                from 'src/app/services/users-service.service';
+import { UserLoginRegisterService } from 'src/app/services/user-login-register.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
@@ -10,12 +11,18 @@ import { Router } from '@angular/router';
   templateUrl: './compo2.component.html',
 })
 export class Compo2Component {
-  constructor(private serviceUser: UsersServiceService,  private cookieService: CookieService, private router: Router) {}
+  constructor(private serviceUser: UsersServiceService,  private cookieService: CookieService, private router: Router, private serviceUserLoginRegister: UserLoginRegisterService) {
+
+    // if (this.serviceUser = serviceUser.userData()) {
+    //   this.router.navigate(['/home']);
+    // }
+  }
 
   //Init vars
   nombre: any = '';
-  role:   any = ''
-  result: any = ''
+  role:   any = '';
+  userResult: any = '';
+  message: any = '';
 
   myForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -24,22 +31,31 @@ export class Compo2Component {
   });
 
   submit(): void {
-    // Load random users
-    this.serviceUser.getUsers();
-    // Validate login
-    this.role = this.serviceUser.validateUser(this.myForm.value.username, this.myForm.value.password)
-    this.nombre = this.myForm.value.username;
-
     // Get cookie 
     this.cookieService.get('username');
-    this.cookieService.get('role');
+    this.cookieService.get('role')
+;
+    this.serviceUserLoginRegister.validateLogin(this.myForm.value.username, this.myForm.value.password).subscribe((res) => {
+      console.log('Respuesta en la componente: ');
+      console.log(localStorage.getItem('usuari'));
+      
+      if ( res.resultats.length = 0) {
+        this.message = 'Invalid username or password';
+        this.userResult=JSON.parse(JSON.stringify(res));
+      }else {
+        this.role = this.userResult.role;
 
-    // Redirects to esdeveniments
-    if (this.role != '') {
-      this.router.navigate(['/esdeveniments']);
-      sessionStorage.removeItem('reloaded'); 
+        this.router.navigate(['/tabla']);
+      }
 
-    } 
+    })
+
+    // // Redirects to esdeveniments
+    // if (this.role != '') {
+    //   this.router.navigate(['/esdeveniments']);
+    //   sessionStorage.removeItem('reloaded'); 
+
+    // } 
 
   }
   

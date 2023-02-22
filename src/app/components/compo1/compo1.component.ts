@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersServiceService } from 'src/app/services/users-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/model/User';
+import { UserLoginRegisterService } from 'src/app/services/user-login-register.service';
+import { Router } from '@angular/router';
+
 
 // COMPONENTE DEL REGISTRO
 @Component({
@@ -10,16 +12,11 @@ import { User } from 'src/app/model/User';
   styleUrls: ['./compo1.component.css'],
 })
 export class Compo1Component {
-  constructor(private serviceUser: UsersServiceService) {}
+  constructor(private serviceUserLoginRegister: UserLoginRegisterService) {}
 
   //Init vars
   registerUserData!: User;
   result = '';
-
-
-  //Form selects
-  estado     = ['Casat/da', 'Solter/a', 'Divorciat/da'];
-  informacio = ['Música', 'Accesoris', 'Roba'];
 
   // Form group
   myForm = new FormGroup({
@@ -27,7 +24,6 @@ export class Compo1Component {
     username: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-      Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$'),
     ]),
 
     correo: new FormControl('', [
@@ -40,31 +36,37 @@ export class Compo1Component {
 
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(2),
     ]),
 
-    passwordrepeat:  new FormControl('', [Validators.required]),
-    sexe:            new FormControl('', [Validators.required]),
-    checkcondicions: new FormControl('', [Validators.required]),
-    estat:           new FormControl('', [Validators.required]),
-    info:            new FormControl('', []),
+    tel:       new FormControl('', [Validators.required]),
+    fullName:  new FormControl('', [Validators.required, Validators.pattern('^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$')]),
+
   });
   
   submit(): void {
     //solo si clicas
     this.registerUserData = new User(
+      this.myForm.value.fullName,
       this.myForm.value.username,
       this.myForm.value.password,
-      'comprador',                 // Siempre comprador al registrar
+      'staff',                  // Siempre staff al registrar
       this.myForm.value.correo,
-      this.myForm.value.estat,
-      this.myForm.value.sexe,
-      this.myForm.value.info,
-      this.myForm.value.checkcondicions
+      this.myForm.value.tel,
     );
+
     // Call service for register the user
-    this.serviceUser.registerUser(this.registerUserData)
-    this.result = "Register successfuly";
+    this.serviceUserLoginRegister.registerUser(this.registerUserData).subscribe((res) => {
+      console.log('Respuesta  de la componente: ');
+      console.log(res);
+      
+      if ( res != null) {
+        this.result = 'User registered successfully';
+      }else {
+        this.result = 'An error occurred';
+      }
+
+    })
 
 
   }

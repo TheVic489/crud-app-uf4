@@ -11,6 +11,10 @@ import { ValidateRepPassDirective } from './directives/validate-rep-pass.directi
 import { CookieService } from 'ngx-cookie-service';
 import { EsdevenimentsComponent } from './esdeveniments/esdeveniments.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
+import { CompoTableComponent } from './components/compo-table/compo-table.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +24,24 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PageNotFoundComponent,
     ValidateRepPassDirective,
     EsdevenimentsComponent,
+    CompoTableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule,
   ],
-  providers: [CookieService],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+    CookieService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

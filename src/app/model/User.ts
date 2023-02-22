@@ -1,30 +1,24 @@
 export class User {
+  full_name: any;
   username: any;
   password: any;
   role: any;
   email: any;
-  civilStatus: any;
-  gender: any;
-  info: any;
-  conditions: any;
+  tel: any;
 
   constructor(
+    full_name: any,
     username: any,
     password: any,
     role: any,
     email: any,
-    civilStatus: any,
-    gender: any,
-    info: any,
-    conditions: any
+    tel: any,
   ) {
+    this.full_name = full_name;
     this.username = username;
     this.password = password;
     this.role = role;
     this.email = email;
-    this.civilStatus = civilStatus;
-    this.gender = gender;
-    this.info = info;
-    this.conditions = conditions;
+    this.tel = tel;
   }
 }

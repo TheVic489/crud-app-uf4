@@ -67,14 +67,14 @@ export class EsdevenimentsComponent implements OnInit {
 
     // Reload page to show logout button
     // Reload page if its has been not reloaded yet.
-    if (sessionStorage.getItem('reloaded') === null) {
-      sessionStorage.setItem('reloaded', 'true');
-      window.location.reload();
-    }
-    // If it's not logged, redirect to login
-    this.isLogged = this.serviceUser.checkCookieSession();
-    if (!this.isLogged) { 
-      this.router.navigate(['/login']);
-    }
+    // if (sessionStorage.getItem('reloaded') === null) {
+    //   sessionStorage.setItem('reloaded', 'true');
+    //   window.location.reload();
+    // }
+    // // If it's not logged, redirect to login
+    // this.isLogged = this.serviceUser.checkCookieSession();
+    // if (!this.isLogged) { 
+    //   this.router.navigate(['/doLoginForm']);
+    // }
   }
 }
