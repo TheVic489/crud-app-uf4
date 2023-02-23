@@ -1,18 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">TicketMaster</a>
+    <button class="btn btn-secondary inline" routerLink="/home" >Home</button>
+    <button class="btn btn-secondary inline" routerLink="/tabla">Tabla</button>
+    <p style="margin-top: 5px;"> - </p>
+    <button class="btn btn-info inline" routerLink="/tabla">Insert</button>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       
     </button>
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
-        <div *ngIf="!isLoged">
-        <button type="button" class="btn btn-primary inline" routerLink="/doLoginForm"> Login</button>
-        <button type="button" class="btn btn-primary inline"  routerLink="/register"> Register</button>
-        </div>
+        
       </ul>
+      <div *ngIf="!isLoged">
+        <button type="button" class="btn btn-primary inline margin" routerLink="/doLoginForm"> Login</button>
+        <button type="button" class="btn btn-primary inline margin "  routerLink="/register"> Register</button>
+        </div>
       <div *ngIf="isLoged">
+        
         <b class="inline margin" >Hola {{myRole}}!</b>
         <button type="button" class="btn btn-warning inline" (click)="doLogOut()"> Logout </button>
       </div>

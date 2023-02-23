@@ -38,9 +38,14 @@ export class UserLoginRegisterService {
         if(res!=null){
           const user:User = new User(res.resultats.full_name ,res.resultats.username, res.resultats.password, res.resultats.role, res.resultats.email, res.resultats.tel);
           console.log("Objecte Usuari");
+          console.log((res.resultats));
+
+          console.log("Token");
           console.log((res.accessToken));
+          
           localStorage.setItem('usuari',JSON.stringify(res.resultats));
           localStorage.setItem('token',(res.accessToken));
+          localStorage.setItem('role',(res.resultats[0].role));
 
           console.log("LocalStorage");
           console.log(localStorage.getItem('usuari'));
@@ -77,9 +82,9 @@ export class UserLoginRegisterService {
   getTableData(): Observable<any> {
     return this.httpclient.get('http://localhost:3000/api/bio_table');
   }
-  // checkSession(){ 
-  //   const valorAlmacenado = localStorage.getItem('usuari');
-  //   this.usuariStorage = JSON.parse(this.valorAlmacenado);
-  // }
+
+  checkSession(){ 
+    return localStorage.getItem('usuari') ? true : false;
+  } 
 
 }

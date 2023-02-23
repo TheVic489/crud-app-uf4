@@ -13,8 +13,8 @@ import { Animal } from 'src/app/model/Animal';
 })
 export class CompoTableComponent implements OnInit{
 
-  tableData:   any[]=[];
-  message!:   string;
+  tableData: any[]=[];
+  message!:  string;
 
   //constructor--> injectar "coses"
   constructor(private myHttpService: UserLoginRegisterService){
@@ -22,6 +22,7 @@ export class CompoTableComponent implements OnInit{
   
   selectDeleteRow(id: number) {
     // Set the selectedId variable to the ID of the clicked row
+    
     this.myHttpService.deleteAnimal(id).subscribe();
     window.location.reload();
     console.log('Selected ID:', id);

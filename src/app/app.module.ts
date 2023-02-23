@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 import { CompoTableComponent } from './components/compo-table/compo-table.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CompoTableComponent } from './components/compo-table/compo-table.compon
     ValidateRepPassDirective,
     EsdevenimentsComponent,
     CompoTableComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -45,7 +45,7 @@ export class Compo2Component {
       }else {
         this.role = this.userResult.role;
 
-        this.router.navigate(['/tabla']);
+        this.router.navigate(['/home']);
       }
 
     })

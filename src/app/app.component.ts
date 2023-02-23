@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UsersServiceService } from 'src/app/services/users-service.service';
+import { UserLoginRegisterService } from 'src/app/services/user-login-register.service';
 
 // MAIN APP COMPONENT
 
@@ -10,19 +11,17 @@ import { UsersServiceService } from 'src/app/services/users-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private serviceUser: UsersServiceService,  private cookieService: CookieService) {}
+  constructor(private serviceUserLogin: UserLoginRegisterService,  private cookieService: CookieService) {}
   
   // Init vars
   isLoged!: boolean;
-  myRole!: string;
+  myRole!: any;
   myEventsArray!: Event[];
   
   // Hacer log out
   doLogOut() {
-
-    //Delete all cookies 
-    this.cookieService.deleteAll();
-    this.cookieService.delete('role', '/');
+    //Delete all localstorage 
+    localStorage.clear();
 
     // Reload page to see changes
     window.location.reload();
@@ -32,8 +31,11 @@ export class AppComponent implements OnInit {
 
     //TOPMENU SESSION HANDLE
     //Check if is loged on init
-    this.isLoged = this.serviceUser.checkCookieSession()
+    this.isLoged = this.serviceUserLogin.checkSession()
+    console.log(this.isLoged)
     //Get cookie
-    this.myRole  = this.cookieService.get('role'); 
+    let dirtRole = JSON.stringify(localStorage.getItem('role'))    
+    this.myRole = dirtRole.replace(/"/g, '');
+
     };
   }
