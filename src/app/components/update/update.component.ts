@@ -12,7 +12,7 @@ export class UpdateComponent implements OnInit {
   constructor ( private userLoginRegisterService: UserLoginRegisterService, private fb: FormBuilder) {}
 
   arrayanimals!:   Animal[];
-  animalToModify!: any ;
+  animalToModify!: Animal ;
   animalForm!: FormGroup;
 
   // ngOnInit() {
@@ -61,9 +61,16 @@ export class UpdateComponent implements OnInit {
         result => {
           this.animalToModify = result;
           console.log (this.animalToModify);
-          const id = result.resultats[0].Id;
-          console.log(id);
 
+          this.animalForm.patchValue({
+            id:result.result[0].Id,
+            grup: result.result[0].Grup,
+            familia: result.result[0].Familia,
+            especie: result.result[0].Espècie,
+            origen: result.result[0].Origen,
+            endemisme: result.result[0].Endemisme,
+            ambient: result.result[0].Ambient,
+          });
         },
         error => {
           console.error(error);
@@ -74,9 +81,33 @@ export class UpdateComponent implements OnInit {
     }
   }
 
-  onSubmit(){
+  onSubmit(): void{
+    
     // Obtener los valores del formulario
-    const values = this.animalForm.value;
+      this.animalToModify = new Animal(
+        this.animalForm.value.fullName,
+        this.animalForm.value.username,
+        this.animalForm.value.password,
+        'staff',                  // Siempre staff al registrar
+        this.animalForm.value.correo,
+        this.animalForm.value.tel,
+      );
+  
+      // Call service for register the user
+      this.userLoginRegisterService.updateAanimal(this.animalToModify).subscribe((res) => {
+        console.log('Respuesta  de la componente: ');
+        console.log(res);
+        
+        if ( res != null) {
+          this.result = 'User registered successfully';
+        }else {
+          this.result = 'An error occurred';
+        }
+  
+      })
+  
+  
+    }
   }
 
   // submitupdateanimal(){

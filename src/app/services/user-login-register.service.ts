@@ -90,6 +90,7 @@ export class UserLoginRegisterService {
   }
 
   selectAnimal(id: any) : Observable<any>{
+
     return this.httpclient.post("http://localhost:3000/select-where", {id:id}, {responseType: "json"});
   }
   getTableData(): Observable<any> {
