@@ -1,9 +1,9 @@
 <div class="container">
-    <h3 class="title form">Agregar animal</h3>
-    <form [formGroup]="animalForm" (ngSubmit)="onSubmit()">
+    <h3 class="title form">Modificar animal</h3>
+    <form [formGroup]="animalForm">
       <p>
         <label>ID:</label>
-        <input type="number" class="form-control" formControlName="id">
+        <input type="number" readonly class="form-control" formControlName="id">
       </p>
       <p>
         <label>Grupo:</label>
@@ -29,7 +29,8 @@
         <label>Ambiente:</label>
         <input type="text" class="form-control" formControlName="ambient">
       </p>
-      <button class="btn btn-primary" type="submit" [disabled]="animalForm.invalid">Guardar</button>
+      <button class="btn btn-primary" (click)="onSubmit()" type="submit" [disabled]="animalForm.invalid">Guardar</button>
     </form>
+    <p class="green-font">{{ result }}</p>
   </div>
   

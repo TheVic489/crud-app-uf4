@@ -1,1 +1,61 @@
-<p>insert works!</p>
+<div class="container">
+
+    <h3 class="title form">Agregar animal</h3>
+
+    <form [formGroup]="miform" (ngSubmit)="submit()">
+    
+        <div class="form-group row">
+            <label for="nom" class="form-label mt-4">Grup:</label>
+            <div class="col-sm-10">
+        <input class="form-control" id="floatingInput" type="text" formControlName="Grup"><br>
+        <span class="red-font" *ngIf="this.miform.get('Grup')?.errors?.['required'] && this.miform.get('Grup')?.touched">You must write the group</span>
+    </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <label for="nom" class="form-label mt-4">Familia:</label>
+        <div class="col-sm-10">
+        <input class="form-control" id="floatingInput" type="text" formControlName="Familia"><br>
+        <span class="red-font" *ngIf="this.miform.get('Familia')?.errors?.['required'] && this.miform.get('Familia')?.touched">You must write the family</span>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+        <label for="nom" class="form-label mt-4">Especie:</label>
+        <div class="col-sm-10">
+        <input class="form-control" id="floatingInput" type="text" formControlName="Especie"><br>
+        <span class="red-font" *ngIf="this.miform.get('Especie')?.errors?.['required'] && this.miform.get('Especie')?.touched">You must write the species</span>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+        <label for="nom" class="form-label mt-4">Origen:</label>
+        <div class="col-sm-10">
+        <input class="form-control" id="floatingInput" type="text" formControlName="Origen"><br>
+        <span class="red-font" *ngIf="this.miform.get('Origen')?.errors?.['required'] && this.miform.get('Origen')?.touched">You must write the origin</span>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+        <label for="nom" class="form-label mt-4">Endemisme:</label>
+        <div class="col-sm-10">
+        <input class="form-control" id="floatingInput" type="text" formControlName="Endemisme"><br>
+        <span class="red-font" *ngIf="this.miform.get('Endemisme')?.errors?.['required'] && this.miform.get('Endemisme')?.touched">You must write the endemism</span>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+        <label for="nom" class="form-label mt-4">Ambient:</label>
+        <div class="col-sm-10">
+        <input class="form-control" id="floatingInput" type="text" formControlName="Ambient"><br>
+        <span class="red-font" *ngIf="this.miform.get('Ambient')?.errors?.['required'] && this.miform.get('Ambient')?.touched">You must write the ambient</span>
+    </div>
+    </div>
+    
+    
+    <button type="submit" [disabled]="miform.invalid" class="btn btn-primary" >Insert animal</button> 
+    
+    </form>
+    
+    </div>

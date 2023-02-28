@@ -11,18 +11,23 @@ import { Animal } from 'src/app/model/Animal';
   templateUrl: './compo-table.component.html',
   styleUrls: ['./compo-table.component.css']
 })
+/** Componente de la tabla **/
 export class CompoTableComponent implements OnInit{
 
-  tableData: any[]=[];
-  message!:  string;
+  tableData: any[]=[]; // Data de la tabla 
   myRole!:   string|null;
   //constructor--> injectar "coses"
   constructor(private myHttpService: UserLoginRegisterService, private router: Router){
   }
+
+  // Coje la id de la fila que seleciones y la asigna en el servicio,
+  // posteriormente te envia al formulario de edicion
   sendId2Modify(id: any) : void {
     this.myHttpService.id2modify = id;
     this.router.navigate(['/update']);
   }
+
+  //Borra la fila del id que seleciones
   selectDeleteRow(id: number) {
     // Set the selectedId variable to the ID of the clicked row
     
@@ -30,7 +35,7 @@ export class CompoTableComponent implements OnInit{
     window.location.reload();
     console.log('Selected ID:', id);
   }
-  //En el momento de inicar se hace esta funcion la cual llama a la lista de eventos y crea variables limites para el pagination
+  //En el momento de inicar hace la peticion al server parar recojer la tabla
   ngOnInit() {
       this.myHttpService.getTableData().subscribe(data => {
         for(let i = 0;i < data.length;i++){

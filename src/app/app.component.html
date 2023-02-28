@@ -3,8 +3,11 @@
     <a class="navbar-brand" href="#">TicketMaster</a>
     <button class="btn btn-secondary inline" routerLink="/home" >Home</button>
     <button class="btn btn-secondary inline" routerLink="/tabla">Tabla</button>
-    <p style="margin-top: 5px;"> - </p>
-    <button class="btn btn-info inline" routerLink="/tabla">Insert</button>
+    <p style="margin-top: 5px;">  </p>
+    
+    <div *ngIf="isLoged" style="margin-left: 40px;" class="center ">
+      <button class="btn btn-info inline center" routerLink="/insert">Insert</button>
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       

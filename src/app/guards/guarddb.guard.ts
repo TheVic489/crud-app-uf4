@@ -18,7 +18,7 @@ export class MyGuardGuard implements CanActivate {
 
       return true;
     } 
-      this.route.navigate(['/esdeveniments']);
+      this.route.navigate(['/tabla']);
       return false;
   }
   

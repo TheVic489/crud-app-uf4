@@ -18,6 +18,7 @@ import { CompoTableComponent } from './components/compo-table/compo-table.compon
 import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
 import { InsertComponent } from './components/insert/insert.component';
+import { InsufficientPermissionsComponent } from './components/insufficient-permissions/insufficient-permissions.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { InsertComponent } from './components/insert/insert.component';
     HomeComponent,
     UpdateComponent,
     InsertComponent,
+    InsufficientPermissionsComponent,
   ],
   imports: [
     BrowserModule,

@@ -80,9 +80,16 @@ export class UserLoginRegisterService {
       })
     );
   }
-  
-  updateAanimal(id: any, grup: any, familia: any, especie: any , origen: any, endemisme: any, ambient:  any ){
+
+  insertAnimal(Grup:any, Familia:any, Especie:any, Origen:any, Endemisme:any, Ambient:any): Observable<any>{
+    return this.httpclient.post("http://localhost:3000/insert/animal", {Grup:Grup, Familia:Familia, Especie:Especie, Origen:Origen, Endemisme:Endemisme, Ambient:Ambient}, {responseType: "json"});
+  }
+
+  up23dateAanimal(id: any, grup: any, familia: any, especie: any , origen: any, endemisme: any, ambient:  any ){
     return this.httpclient.post<Animal>(this.url+'/update',{'id': id, 'grup': grup, 'familia':familia, 'especie': especie, 'origen': origen,'endemisme':endemisme, 'ambient': ambient },{responseType:'json'})
+  }
+  updateAnimal(animal: Animal){
+    return this.httpclient.post<Animal>(this.url+'/update',{'id': animal.id, 'grup': animal.grup, 'familia':animal.familia, 'especie': animal.especie, 'origen': animal.origen,'endemisme':animal.endemisme, 'ambient': animal.ambient },{responseType:'json'})
   }
   deleteAnimal(id:any): Observable<any>{
     //this.u = new User(username, password)
