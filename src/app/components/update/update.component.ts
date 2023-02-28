@@ -12,31 +12,8 @@ export class UpdateComponent implements OnInit {
   constructor ( private userLoginRegisterService: UserLoginRegisterService, private fb: FormBuilder) {}
 
   arrayanimals!:   Animal[];
-  animalToModify!: Animal ;
-
-  animalForm = new FormGroup({
-    id: new FormControl('', [
-      Validators.required
-    ]),
-    grup: new FormControl('', [
-      Validators.required
-    ]),
-    familia: new FormControl('', [
-      Validators.required
-    ]),
-    especie: new FormControl('', [
-      Validators.required
-    ]),
-    origen: new FormControl('', [
-      Validators.required
-    ]),
-    endemisme: new FormControl('', [
-      Validators.required
-    ]),
-    ambient: new FormControl('', [
-      Validators.required
-    ])
-  })
+  animalToModify!: any ;
+  animalForm!: FormGroup;
 
   // ngOnInit() {
   //   let animal_raw = this.userLoginRegisterService.selectAnimal(this.userLoginRegisterService.id2modify)
@@ -53,12 +30,40 @@ export class UpdateComponent implements OnInit {
   // }
 
   async ngOnInit() {
+
+    this.animalForm = new FormGroup({
+      id: new FormControl('', [
+        Validators.required
+      ]),
+      grup: new FormControl('', [
+        Validators.required
+      ]),
+      familia: new FormControl('', [
+        Validators.required
+      ]),
+      especie: new FormControl('', [
+        Validators.required
+      ]),
+      origen: new FormControl('', [
+        Validators.required
+      ]),
+      endemisme: new FormControl('', [
+        Validators.required
+      ]),
+      ambient: new FormControl('', [
+        Validators.required
+      ])
+    })
+
     let animal_raw;
     try {
       this.userLoginRegisterService.selectAnimal(this.userLoginRegisterService.id2modify).subscribe(
         result => {
-          animal_raw = result;
-          console.log (animal_raw);
+          this.animalToModify = result;
+          console.log (this.animalToModify);
+          const id = result.resultats[0].Id;
+          console.log(id);
+
         },
         error => {
           console.error(error);
