@@ -15,11 +15,14 @@ export class CompoTableComponent implements OnInit{
 
   tableData: any[]=[];
   message!:  string;
-
+  myRole!:   string|null;
   //constructor--> injectar "coses"
-  constructor(private myHttpService: UserLoginRegisterService){
+  constructor(private myHttpService: UserLoginRegisterService, private router: Router){
   }
-  
+  sendId2Modify(id: any) : void {
+    this.myHttpService.id2modify = id;
+    this.router.navigate(['/update']);
+  }
   selectDeleteRow(id: number) {
     // Set the selectedId variable to the ID of the clicked row
     
@@ -39,4 +42,6 @@ export class CompoTableComponent implements OnInit{
         console.log(this.tableData)
     })
   
+    this.myRole = this.myHttpService.getRole()
+
   }};

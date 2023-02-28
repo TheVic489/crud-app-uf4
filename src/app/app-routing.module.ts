@@ -5,6 +5,7 @@ import { Compo1Component } from './components/compo1/compo1.component';
 import { Compo2Component } from './components/compo2/compo2.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UpdateComponent } from './components/update/update.component';
 import { EsdevenimentsComponent } from './esdeveniments/esdeveniments.component';
 
 const routes: Routes = [
@@ -29,10 +30,9 @@ const routes: Routes = [
   },
 
   {
-    path: 'esdeveniments',
-    component: EsdevenimentsComponent
+    path: 'update',
+    component: UpdateComponent
   },
-
   {
     path: 'home',
     component: HomeComponent

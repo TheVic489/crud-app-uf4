@@ -16,6 +16,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 import { CompoTableComponent } from './components/compo-table/compo-table.component';
 import { HomeComponent } from './components/home/home.component';
+import { UpdateComponent } from './components/update/update.component';
+import { InsertComponent } from './components/insert/insert.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { HomeComponent } from './components/home/home.component';
     EsdevenimentsComponent,
     CompoTableComponent,
     HomeComponent,
+    UpdateComponent,
+    InsertComponent,
   ],
   imports: [
     BrowserModule,

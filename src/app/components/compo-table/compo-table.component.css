@@ -32,9 +32,14 @@ ul .ngx-pagination {
 }
 .float-right {
     float: right;
-    margin-right: 100px;
+    margin-right: 20px;
 
 }
+.padding-left {
+    padding-left: 15px;
+    margin-left: 15px;
+}
+    
 .abajo-izquierda {
     text-align: right;
     float: right;

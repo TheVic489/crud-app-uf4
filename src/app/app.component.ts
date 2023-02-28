@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     localStorage.clear();
 
     // Reload page to see changes
-    window.location.reload();
+    window.location.reload(); 
 
   }
   ngOnInit(): void {

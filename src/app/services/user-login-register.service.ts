@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { User } from '../model/User';
+import { Animal } from '../model/Animal';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+
+// Servicio que maneja la comunicacion entre el servidor y el cliente
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +19,12 @@ export class UserLoginRegisterService {
     return this.usuariSubject.value;
   }
 
+  //ID del animal para modificar
+  id2modify: any;
+
   valorAlmacenado = ''
   usuariStorage = localStorage;
+
   constructor( private httpclient: HttpClient) {   
 
   this.usuariSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('usuari')!));//estat inicial del BehaviorSubject
@@ -73,12 +80,18 @@ export class UserLoginRegisterService {
       })
     );
   }
-
+  
+  updateAanimal(id: any, grup: any, familia: any, especie: any , origen: any, endemisme: any, ambient:  any ){
+    return this.httpclient.post<Animal>(this.url+'/update',{'id': id, 'grup': grup, 'familia':familia, 'especie': especie, 'origen': origen,'endemisme':endemisme, 'ambient': ambient },{responseType:'json'})
+  }
   deleteAnimal(id:any): Observable<any>{
     //this.u = new User(username, password)
     return this.httpclient.post("http://localhost:3000/delete", {Id:id}, {responseType: "json"});
   }
 
+  selectAnimal(id: any) : Observable<any>{
+    return this.httpclient.post("http://localhost:3000/select-where", {id:id}, {responseType: "json"});
+  }
   getTableData(): Observable<any> {
     return this.httpclient.get('http://localhost:3000/api/bio_table');
   }
@@ -87,4 +100,7 @@ export class UserLoginRegisterService {
     return localStorage.getItem('usuari') ? true : false;
   } 
 
+  getRole(){ 
+    return localStorage.getItem('role');
+  } 
 }

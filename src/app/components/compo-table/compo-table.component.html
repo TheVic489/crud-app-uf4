@@ -10,6 +10,7 @@
         <th scope="col">Origen</th>
         <th scope="col">Endemisme</th>
         <th scope="col">Ambient</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +24,8 @@
         <td class="table-active">{{ dato.ambient }}</td>
 
         <td class="table-active">
-          <button class="btn btn-secondary float-right" (click)="selectDeleteRow(dato.id)">Delete</button>
+          <button *ngIf="myRole == 'admin'" class="btn btn-dark " (click)="sendId2Modify(dato.id)">Modify</button>
+          <button *ngIf="myRole == 'admin'" class="btn btn-secondary padding-left " (click)="sendId2Modify(dato.id)">Delete</button>
         </td>
       </tr>
     </tbody>

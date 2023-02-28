@@ -10,12 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./compo2.component.css'],
   templateUrl: './compo2.component.html',
 })
-export class Compo2Component {
+export class Compo2Component implements OnInit {
   constructor(private serviceUser: UsersServiceService,  private cookieService: CookieService, private router: Router, private serviceUserLoginRegister: UserLoginRegisterService) {
 
-    // if (this.serviceUser = serviceUser.userData()) {
-    //   this.router.navigate(['/home']);
-    // }
   }
 
   //Init vars
@@ -32,9 +29,9 @@ export class Compo2Component {
 
   submit(): void {
     // Get cookie 
-    this.cookieService.get('username');
-    this.cookieService.get('role')
-;
+    
+
+
     this.serviceUserLoginRegister.validateLogin(this.myForm.value.username, this.myForm.value.password).subscribe((res) => {
       console.log('Respuesta en la componente: ');
       console.log(localStorage.getItem('usuari'));
@@ -46,17 +43,20 @@ export class Compo2Component {
         this.role = this.userResult.role;
 
         this.router.navigate(['/home']);
+        window.location.reload(); 
+
       }
 
     })
 
-    // // Redirects to esdeveniments
-    // if (this.role != '') {
-    //   this.router.navigate(['/esdeveniments']);
-    //   sessionStorage.removeItem('reloaded'); 
-
-    // } 
 
   }
-  
+  ngOnInit(): void {
+
+    // Redirect if already logged in
+    if (this.serviceUserLoginRegister.checkSession()){
+      this.router.navigate(['/home']);
+    }
+
+    };
 }

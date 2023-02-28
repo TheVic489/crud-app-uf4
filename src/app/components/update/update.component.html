@@ -1,0 +1,35 @@
+<div class="container">
+    <h3 class="title form">Agregar animal</h3>
+    <form [formGroup]="animalForm" (ngSubmit)="onSubmit()">
+      <p>
+        <label>ID:</label>
+        <input type="number" class="form-control" formControlName="id">
+      </p>
+      <p>
+        <label>Grupo:</label>
+        <input type="text" class="form-control" formControlName="grup">
+      </p>
+      <p>
+        <label>Familia:</label>
+        <input type="text" class="form-control" formControlName="familia">
+      </p>
+      <p>
+        <label>Especie:</label>
+        <input type="text" class="form-control" formControlName="especie">
+      </p>
+      <p>
+        <label>Origen:</label>
+        <input type="text" class="form-control" formControlName="origen">
+      </p>
+      <p>
+        <label>Endemismo:</label>
+        <input type="text" class="form-control" formControlName="endemisme">
+      </p>
+      <p>
+        <label>Ambiente:</label>
+        <input type="text" class="form-control" formControlName="ambient">
+      </p>
+      <button class="btn btn-primary" type="submit" [disabled]="animalForm.invalid">Guardar</button>
+    </form>
+  </div>
+  
