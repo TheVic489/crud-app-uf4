@@ -28,7 +28,9 @@ export class Compo2Component implements OnInit {
     password: new FormControl('', [Validators.required]),
   });
 
-  // Al darle al boton de enviar
+  /**
+   * Al darle al boton de enviar
+   *  */ 
   submit(): void {
     // Get cookie 
     

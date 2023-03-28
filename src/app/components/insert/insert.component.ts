@@ -59,10 +59,8 @@ export class InsertComponent implements OnInit {
         console.log('Respuesta  de la componente: ');
         console.log(res);
         
-        if ( res != null) {
-          this.result = 'User registered successfully';
-        }else {
-          this.result = 'An error occurred';
+        if ( res) {
+          this.result = 'Animal registered successfully';
         }
   
       }

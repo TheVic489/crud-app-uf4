@@ -25,7 +25,7 @@
 
         <td class="table-active">
           <button *ngIf="myRole == 'admin'" class="btn btn-dark " (click)="sendId2Modify(dato.id)">Modify</button>
-          <button *ngIf="myRole == 'admin'" class="btn btn-secondary padding-left " (click)="sendId2Modify(dato.id)">Delete</button>
+          <button *ngIf="myRole == 'admin'" class="btn btn-secondary padding-left " (click)="selectDeleteRow(dato.id)">Delete</button>
         </td>
       </tr>
     </tbody>
